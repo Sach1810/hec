@@ -3,9 +3,9 @@
 /**
  * Module dependencies.
  */
-
-var app = require('../app');
-var debug = require('debug')('hec:server');
+//change line 7 by adding .app as no longer just returning our express app but also an opject containing app and server
+var app = require('../app').app;
+var debug = require('debug')('www:server');
 var http = require('http');
 
 /**
@@ -18,8 +18,8 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
-
-var server = http.createServer(app);
+//changed to require the instance we creaed in app.js which also contains our socket.io server.
+var server = require('../app').server;
 
 /**
  * Listen on provided port, on all network interfaces.
