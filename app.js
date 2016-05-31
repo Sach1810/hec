@@ -9,10 +9,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-
-//2 lines below are for setting up socket.io
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+app.io = require('socket.io')();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -61,7 +58,22 @@ app.use(function(err, req, res, next) {
   });
 });
 
-//exports our socket server to bin/www(code added there) we required with socket.io
-module.exports = {app: app, server: server};
+// start listen with socket.io
+app.io.on('connection', function(socket){  
+  console.log('a user connected');
 
-// module.exports = app;
+  // socket.on('new message', function(msg){
+  //   console.log('new message: ' + msg);
+  //   app.io.emit('chat message', msg);
+  // });
+
+  //  socket.on('newMove', function (position){
+  //   app.io.emit('moved',position);
+
+  //   });
+});
+
+ 
+
+
+module.exports = app;

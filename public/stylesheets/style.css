@@ -36,3 +36,10 @@ padding: 5px;
   display: none;
 }
 
+.pSquare {
+  height:50vh;
+  width:32.5vw;
+  background-color: #000;
+  display: inline-block;
+}
+

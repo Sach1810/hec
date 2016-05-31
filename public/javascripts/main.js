@@ -1,3 +1,30 @@
+ var socket = io();
+
+ function sendFunction() {
+    socket.emit('new message', $('#new-message').val());
+    $('#new-message').val('');
+
+
+  }
+
+  socket.on('chat message', function(msg){
+    $('#messages-area').append($('<li>').text(msg));
+  });
+
+  function move(){
+    p += 10;
+
+      socket.emit('newMove', p);
+      console.log(p);
+
+  };
+
+    socket.on('moved', function(position){
+      $(".move").css("left", position + x);
+
+  });
+
+
 //Countdown timer before the game
 var countdown = function(id){
   var duration = 4;
@@ -67,5 +94,7 @@ var gameTime = function(){
   }, 1000);
 
 };
+
+
 
 

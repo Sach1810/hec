@@ -11,7 +11,7 @@ router.get('/computer', function(req, res, next){
 });
 
 router.get('/phone', function(req, res, next){
-  res.render('computer');
+  res.render('phone');
 });
 
 module.exports = router;
