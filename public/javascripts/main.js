@@ -10,30 +10,35 @@ var duration = 4;
 var computerId;
 var phoneId;
 
-window.ondevicemotion = function(event) {
-    ax = Math.round(Math.abs(event.accelerationIncludingGravity.x * 1));
-    console.log(ax);
-};
+
+
+// var axReading = setInterval(function(){ 
+//   accel();
+// }, 2000);
 
 var accel = function (){
-  console.log("1 " + ax);
-setInterval(function(){ 
-    console.log("2 " + ax);
+  window.ondevicemotion = function(event) {
+    ax = Math.round(Math.abs(event.accelerationIncludingGravity.x * 1));
+  };
+  var axReading = setInterval(function(){ 
     socket.emit('acc', ax);
+        }, 500); 
 
-  }, 1000);
 };
 
   function move(id){
 
-    socket.emit('newMove', id);
+      socket.emit('newMove', id);
       
       
   };
 
-  socket.on('liveAcc', function(ax){
-    console.log("3 " + ax);
+  socket.on('liveAcc', function(x){
 
+
+      // console.log(x);
+      accel();
+ 
 
   });
 
@@ -61,8 +66,9 @@ setInterval(function(){
 //Countdown timer before the game
 var countdown = function(id){
 
+
   var loweringCount = setInterval(function(){ 
-          duration -= 1;
+    duration -= 1;
      $("#countdown").html(duration);
     if (duration === 0){
       $("#countdown").removeClass('show');
@@ -77,6 +83,8 @@ var countdown = function(id){
 
 var startGame = function(id){
   gameTime();
+  accel();
+
   var game = setInterval(function(){ 
 
     var id = id;
@@ -113,6 +121,7 @@ var startGame = function(id){
 //Sets time period for the game to end
   setTimeout(function(){
     clearInterval(game);
+    // clearInterval(axReading);
   }, 5000);
 
 };
