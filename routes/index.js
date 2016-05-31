@@ -6,4 +6,12 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
+router.get('/computer', function(req, res, next){
+  res.render('computer');
+});
+
+router.get('/phone', function(req, res, next){
+  res.render('phone');
+});
+
 module.exports = router;

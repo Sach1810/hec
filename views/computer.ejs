@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Computer</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div id="countdown" class="show"></div>
+    <div id="gameOne">
+     <div class="rowGameOne">
+      <div id="one" class="square"></div>
+      <div id="two" class="square"></div>
+      <div id="three" class="square"></div>
+    </div>
+    <div class="rowGameOne">
+      <div id="four" class="square""></div>
+      <div id="five" class="square"></div>
+      <div id="six" class="square"></div>
+    </div>
+    <a href="/">Home</a>
+    <a href="#" onclick="countdown()">Play Now</a>
+    <div>time left:</div><div id="gameTime"></div>
+    <div id="score"></div>
+    <div id="test"></div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/main.js"></script>
+  </body>
+</html>
