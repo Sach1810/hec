@@ -69,7 +69,6 @@ app.io.on('connection', function(socket){
 
     socket.on('acc', function (ax){
       app.io.emit('liveAcc',ax);
-        console.log("liveAcc");
     });
 });
 

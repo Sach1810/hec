@@ -3,19 +3,32 @@ var socket = io();
 var score = 0;
 var right = 0;
 var wrong = 0;
-var ax = "ax";
+var ax;
+
+
 var computerId;
 var phoneId;
+
+window.ondevicemotion = function(event) {
+    ax = Math.round(Math.abs(event.accelerationIncludingGravity.x * 1));
+};
+
+var accel = function (){
+    socket.emit('acc', ax);
+};
 
   function move(id){
 
       socket.emit('newMove', id);
       
-      socket.emit('acc', ax);
+      
   };
 
   socket.on('liveAcc', function(ax){
-    console.log(ax);
+    var axReading = setInterval(function(){ 
+      console.log(ax);
+      accel();
+    }, 200);
   });
 
     socket.on('moved', function(id){
@@ -41,7 +54,7 @@ var phoneId;
 
 //Countdown timer before the game
 var countdown = function(id){
-  var duration = 4;
+
 
   var loweringCount = setInterval(function(){ 
 
@@ -80,7 +93,6 @@ var startGame = function(id){
     };
 
     computerId = id;
-    console.log("computer");
 
     $("#" + id).css('background-color', 'green');
 
@@ -97,7 +109,7 @@ var startGame = function(id){
 //Sets time period for the game to end
   setTimeout(function(){
     clearInterval(game);
-  }, 60000);
+  }, 5000);
 
 };
 
@@ -109,6 +121,7 @@ var gameTime = function(){
      $("#gameTime").html(time);
     if (time === 0){
       clearInterval(loweringCount);
+      clearInterval(axReading);
     }
   }, 1000);
 
