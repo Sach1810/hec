@@ -127,7 +127,7 @@ var startGame = function(id){
 };
 
 var gameTime = function(){
-  var time = 10;
+  var time = 5;
   var loweringCount = setInterval(function(){ 
 
     time -= 1;
