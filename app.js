@@ -62,15 +62,10 @@ app.use(function(err, req, res, next) {
 app.io.on('connection', function(socket){  
   console.log('a user connected');
 
-  // socket.on('new message', function(msg){
-  //   console.log('new message: ' + msg);
-  //   app.io.emit('chat message', msg);
-  // });
-
-  //  socket.on('newMove', function (position){
-  //   app.io.emit('moved',position);
-
-  //   });
+   socket.on('newMove', function (id){
+    app.io.emit('moved',id);
+      console.log("emit-server");
+    });
 });
 
  

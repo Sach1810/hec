@@ -1,33 +1,33 @@
- var socket = io();
+var socket = io();
 
- function sendFunction() {
-    socket.emit('new message', $('#new-message').val());
-    $('#new-message').val('');
+var score = 0;
+var computerId;
+var phoneId;
 
+  function move(id){
 
-  }
+      socket.emit('newMove', id);
+      };
 
-  socket.on('chat message', function(msg){
-    $('#messages-area').append($('<li>').text(msg));
-  });
+    socket.on('moved', function(id){
+      phoneId = id;
+    if (computerId == phoneId){
+      var count = 0;
 
-  function move(){
-    p += 10;
-
-      socket.emit('newMove', p);
-      console.log(p);
-
-  };
-
-    socket.on('moved', function(position){
-      $(".move").css("left", position + x);
-
+      if (count === 0) {
+        score +=1;
+        count ++;
+      };
+    } else {
+      score -= 0.5;
+     };
+      $("#score").html(score);
   });
 
 
 //Countdown timer before the game
 var countdown = function(id){
-  var duration = 4;
+  var duration = 1;
 
   var loweringCount = setInterval(function(){ 
 
@@ -65,20 +65,25 @@ var startGame = function(id){
       id = "six";
     };
 
+    computerId = id;
+    console.log("computer");
+
     $("#" + id).css('background-color', 'green');
 
     setTimeout(function(){
      $("#" + id).css('background-color', 'black');
-    }, 900);
+
+
+    }, 1000);
 
 
 
- }, 1000);
+ }, 3000);
 
 //Sets time period for the game to end
   setTimeout(function(){
     clearInterval(game);
-  }, 10000);
+  }, 60000);
 
 };
 
@@ -94,7 +99,4 @@ var gameTime = function(){
   }, 1000);
 
 };
-
-
-
 
