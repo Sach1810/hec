@@ -66,6 +66,11 @@ app.io.on('connection', function(socket){
     app.io.emit('moved',id);
       console.log("emit-server");
     });
+
+    socket.on('acc', function (ax){
+      app.io.emit('liveAcc',ax);
+        console.log("liveAcc");
+    });
 });
 
  
