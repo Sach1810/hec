@@ -28,7 +28,7 @@ var accel = function (){
     var axReading = setInterval(function(){ 
       console.log(ax);
       accel();
-    }, 500);
+    }, 2000);
   });
 
     socket.on('moved', function(id){
