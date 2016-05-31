@@ -14,7 +14,9 @@ window.ondevicemotion = function(event) {
 };
 
 var accel = function (){
+  var axReading = setInterval(function(){ 
     socket.emit('acc', ax);
+  }, 2000);
 };
 
   function move(id){
@@ -25,10 +27,10 @@ var accel = function (){
   };
 
   socket.on('liveAcc', function(ax){
-    var axReading = setInterval(function(){ 
+
       console.log(ax);
       accel();
-    }, 2000);
+
   });
 
     socket.on('moved', function(id){
