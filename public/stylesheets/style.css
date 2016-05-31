@@ -1,8 +1,17 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-a {
-  color: #00B7FF;
+.rowGameOne {
+  padding-left: 4vw;
+/*  background-color: red;*/
 }
+
+.square {
+  height: 30vw;
+  width: 30vw;
+  background-color: #000;
+  display: inline-block;
+}
+
