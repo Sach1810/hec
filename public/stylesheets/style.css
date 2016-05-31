@@ -3,6 +3,11 @@
   padding: 0;
 }
 
+.playBtn {
+font-size: 2em;
+padding: 5px;
+}
+
 .rowGameOne {
   padding-left: 4vw;
 /*  background-color: red;*/
