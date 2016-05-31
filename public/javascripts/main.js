@@ -27,7 +27,7 @@ var phoneId;
 
 //Countdown timer before the game
 var countdown = function(id){
-  var duration = 1;
+  var duration = 4;
 
   var loweringCount = setInterval(function(){ 
 
@@ -78,7 +78,7 @@ var startGame = function(id){
 
 
 
- }, 3000);
+ }, 1000);
 
 //Sets time period for the game to end
   setTimeout(function(){
