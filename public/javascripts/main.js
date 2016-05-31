@@ -1,7 +1,25 @@
+//Countdown timer before the game
+var countdown = function(id){
+  var duration = 4;
+
+  var loweringCount = setInterval(function(){ 
+
+    duration -= 1;
+     $("#countdown").html(duration);
+    if (duration === 0){
+      $("#countdown").removeClass('show');
+      $("#countdown").addClass('hide');
+      clearInterval(loweringCount);
+      startGame();
+    }
+  }, 1000);
+
+};
 
 
-var greenTest = function(id){
-  setInterval(function(){ 
+var startGame = function(id){
+  gameTime();
+  var game = setInterval(function(){ 
 
     var id = id;
     var random = Math.floor(Math.random() * 6) + 1;
@@ -29,4 +47,25 @@ var greenTest = function(id){
 
 
  }, 1000);
-}
+
+//Sets time period for the game to end
+  setTimeout(function(){
+    clearInterval(game);
+  }, 10000);
+
+};
+
+var gameTime = function(){
+  var time = 10;
+  var loweringCount = setInterval(function(){ 
+
+    time -= 1;
+     $("#gameTime").html(time);
+    if (time === 0){
+      clearInterval(loweringCount);
+    }
+  }, 1000);
+
+};
+
+

@@ -10,4 +10,8 @@ router.get('/computer', function(req, res, next){
   res.render('computer');
 });
 
+router.get('/phone', function(req, res, next){
+  res.render('computer');
+});
+
 module.exports = router;
