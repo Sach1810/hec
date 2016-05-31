@@ -1,6 +1,8 @@
 var socket = io();
 
 var score = 0;
+var right = 0;
+var wrong = 0;
 var computerId;
 var phoneId;
 
@@ -17,9 +19,14 @@ var phoneId;
       if (count === 0) {
         score +=1;
         count ++;
+        right ++;
+        $("#right").html(right);
+
       };
     } else {
       score -= 0.5;
+      wrong ++;
+      $("#wrong").html(wrong);
      };
       $("#score").html(score);
   });
