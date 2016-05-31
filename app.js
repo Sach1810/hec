@@ -64,15 +64,18 @@ app.io.on('connection', function(socket){
 
    socket.on('newMove', function (id){
     app.io.emit('moved',id);
-      console.log("emit-server");
     });
 
     socket.on('acc', function (ax){
       app.io.emit('liveAcc',ax);
     });
-});
 
- 
+    // if you receive data labeled 'acceleration' from this socket then print it out
+
+    socket.on('acceleration', function(data){
+      app.io.emit('phoneData',data);
+    });
+});
 
 
 module.exports = app;
