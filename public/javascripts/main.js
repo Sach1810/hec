@@ -39,20 +39,53 @@ socket.on('moved', function(id){
 });
 
 socket.on('phoneData', function(coordinates){
-      var x = coordinates.x;
-      var y = coordinates.y;
-      var z = coordinates.z;
+      
+console.log(coordinates);
 
-      console.log(coordinates);
+document.getElementById('cube').style.webkitTransform = 
+               document.getElementById('cube').style.transform =
+                       'rotateX(' + coordinates.az + 'deg) ' +
+                       'rotateY(' + coordinates.gy + 'deg) ' +
+                       'rotateZ(' + coordinates.bx + 'deg)';
 
-      var ax = x * 36;
-      var ay = y * 36;
-      var az = z * 36;
+
+document.getElementById('cube1').style.webkitTransform = 
+               document.getElementById('cube').style.transform =
+                       'rotateX(' + coordinates.az + 'deg) ' +
+                       'rotateY(' + coordinates.gy + 'deg) ' +
+                       'rotateZ(' + coordinates.bx + 'deg)';
+
+                       document.getElementById('cube2').style.webkitTransform = 
+               document.getElementById('cube').style.transform =
+                       'rotateX(' + coordinates.az + 'deg) ' +
+                       'rotateY(' + coordinates.gy + 'deg) ' +
+                       'rotateZ(' + coordinates.bx + 'deg)';
+
+// var bx = coordinates.bx;
+// var gy = coordinates.gy;
+// var az = coordinates.az ;
+
+// // $('.rotateX').css('transform', "rotate3d("+ bx +","+ gy +"," + az + ","+ 360 + "deg)");
+
+// $('.rotateX').css('transform', 'rotateX(' + bx + 'deg)');
+// $('.rotateX').css('transform', 'rotateY(' + gy + 'deg)');
+// $('.rotateX').css('transform', 'rotateZ(' + az + 'deg)');
+
+
+      // var x = coordinates.x;
+      // var y = coordinates.y;
+      // var z = coordinates.z;
+
+      
+
+      // var ax = x * 57.2958;
+      // var ay = y * 57.2958;
+      // var az = z * 57.2958;
 
       // $(".rotate").css("transform", x + "vw");
 
 
-      $('.rotateX').css('transform', "rotate3d("+ ax +","+ ay +"," + az + ","+ 360 + "deg)");
+      // $('.rotateX').css('transform', "rotate3d("+ ax +","+ ay +"," + az + ","+ 30 + "deg)");
       // $('.rotateY').css('transform', 'rotateY(' + ay + 'deg)');
       // $('.rotate').css('transform', 'rotateZ(' + az + 'deg)');
 
