@@ -1,5 +1,6 @@
 //Run socket.io
 var socket = io();
+
 var phoneLink = "https://66decad2.ngrok.io/rotating-cubes-phone"
 
 var id;
@@ -25,6 +26,13 @@ $('#qrcode').qrcode({
   "color": "#3a3",
   "text": phoneLink});
 
+
+
+
+var gameOne = function(){
+  $(".title").addClass("hide");
+  $("#countdown").removeClass("hide");
+
 socket.on('moved', function(id){
   phoneId = id;
   var maxPoints = 0;
@@ -47,50 +55,44 @@ socket.on('moved', function(id){
 });
 
 socket.on('phoneData', function(coordinates){
-      
-console.log(coordinates);
 
-document.getElementById('cubeOne').style.webkitTransform = 
-  document.getElementById('cubeOne').style.transform =
-    'rotateX(' + coordinates.az + 'deg) ' +
-    'rotateY(' + coordinates.gy + 'deg) ' +
-    'rotateZ(' + coordinates.bx + 'deg)';
+  document.getElementById('cubeOne').style.webkitTransform = 
+    document.getElementById('cubeOne').style.transform =
+      'rotateX(' + coordinates.az + 'deg) ' +
+      'rotateY(' + coordinates.gy + 'deg) ' +
+      'rotateZ(' + coordinates.bx + 'deg)';
 
 
-document.getElementById('cubeTwo').style.webkitTransform = 
-  document.getElementById('cubeTwo').style.transform =
-    'rotateX(' + coordinates.az + 'deg) ' +
-    'rotateY(' + coordinates.gy + 'deg) ' +
-    'rotateZ(' + coordinates.bx + 'deg)';
+  document.getElementById('cubeTwo').style.webkitTransform = 
+    document.getElementById('cubeTwo').style.transform =
+      'rotateX(' + coordinates.az + 'deg) ' +
+      'rotateY(' + coordinates.gy + 'deg) ' +
+      'rotateZ(' + coordinates.bx + 'deg)';
 
-document.getElementById('cubeThree').style.webkitTransform = 
-  document.getElementById('cubeThree').style.transform =
-    'rotateX(' + coordinates.az + 'deg) ' +
-    'rotateY(' + coordinates.gy + 'deg) ' +
-    'rotateZ(' + coordinates.bx + 'deg)';
+  document.getElementById('cubeThree').style.webkitTransform = 
+    document.getElementById('cubeThree').style.transform =
+      'rotateX(' + coordinates.az + 'deg) ' +
+      'rotateY(' + coordinates.gy + 'deg) ' +
+      'rotateZ(' + coordinates.bx + 'deg)';
 
-document.getElementById('cubeFour').style.webkitTransform = 
-  document.getElementById('cubeFour').style.transform =
-    'rotateX(' + coordinates.az + 'deg) ' +
-    'rotateY(' + coordinates.gy + 'deg) ' +
-    'rotateZ(' + coordinates.bx + 'deg)';
+  document.getElementById('cubeFour').style.webkitTransform = 
+    document.getElementById('cubeFour').style.transform =
+      'rotateX(' + coordinates.az + 'deg) ' +
+      'rotateY(' + coordinates.gy + 'deg) ' +
+      'rotateZ(' + coordinates.bx + 'deg)';
 
-document.getElementById('cubeFive').style.webkitTransform = 
-  document.getElementById('cubeFive').style.transform =
-    'rotateX(' + coordinates.az + 'deg) ' +
-    'rotateY(' + coordinates.gy + 'deg) ' +
-    'rotateZ(' + coordinates.bx + 'deg)';
+  document.getElementById('cubeFive').style.webkitTransform = 
+    document.getElementById('cubeFive').style.transform =
+      'rotateX(' + coordinates.az + 'deg) ' +
+      'rotateY(' + coordinates.gy + 'deg) ' +
+      'rotateZ(' + coordinates.bx + 'deg)';
 
-document.getElementById('cubeSix').style.webkitTransform = 
-  document.getElementById('cubeSix').style.transform =
-    'rotateX(' + coordinates.az + 'deg) ' +
-    'rotateY(' + coordinates.gy + 'deg) ' +
-    'rotateZ(' + coordinates.bx + 'deg)';
+  document.getElementById('cubeSix').style.webkitTransform = 
+    document.getElementById('cubeSix').style.transform =
+      'rotateX(' + coordinates.az + 'deg) ' +
+      'rotateY(' + coordinates.gy + 'deg) ' +
+      'rotateZ(' + coordinates.bx + 'deg)';
 });
-
-var gameOne = function(){
-  $(".title").addClass("hide");
-  $("#countdown").removeClass("hide");
 
   inPlay = true;
   countdown();
