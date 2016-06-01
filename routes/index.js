@@ -18,4 +18,8 @@ router.get('/test', function(req, res, next){
   res.render('test');
 });
 
+router.get('/games', function(req, res, next){
+  res.render('games');
+});
+
 module.exports = router;
