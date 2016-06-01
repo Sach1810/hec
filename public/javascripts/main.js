@@ -43,11 +43,19 @@ socket.on('phoneData', function(coordinates){
       var y = coordinates.y;
       var z = coordinates.z;
 
+      var ax = x * 10;
+      var ay = y * 10;
+      var az = z * 10;
+
       // $(".rotate").css("transform", x + "vw");
 
-      $('.rotate').css('transform', 'transform(' + x + ')');
+      console.log(x);
 
-      console.log(coordinates);
+      $('.rotate').css('transform', 'rotateX(' + ax + 'deg)');
+      $('.rotate').css('transform', 'rotateY(' + ay + 'deg)');
+      $('.rotate').css('transform', 'rotateZ(' + az + 'deg)');
+
+      // console.log(coordinates);
 });
 
 var gameOne = function(){
