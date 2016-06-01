@@ -74,6 +74,7 @@ app.io.on('connection', function(socket){
 
     socket.on('acceleration', function(data){
       app.io.emit('phoneData',data);
+      console.log("phoneData");
     });
 });
 

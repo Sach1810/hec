@@ -4,8 +4,6 @@ var move = function(id){
   socket.emit('newMove',id);
 };
 
-socket.emit('acceleration',coordinates);
-
 window.ondevicemotion = function(e){
     var ax = e.accelerationIncludingGravity.x;
     var ay = e.accelerationIncludingGravity.y;

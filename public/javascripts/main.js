@@ -8,7 +8,7 @@ var phoneId;
 var countInterval = 1;
 var countdownTime = 1;
 
-var totalPlayingTime = 60;
+var totalPlayingTime = 10;
 
 var squareChangeSpeed = 1000;
 var inPlay = false;
@@ -16,7 +16,6 @@ var inPlay = false;
 var score = 0;
 var right = 0;
 var wrong = 0;
-
 
 socket.on('moved', function(id){
   phoneId = id;
@@ -39,7 +38,15 @@ socket.on('moved', function(id){
 
 });
 
+socket.on('phoneData', function(coordinates){
+      var x = coordinates.x;
+      var y = coordinates.y;
+      var z = coordinates.z;
 
+      $(".square").css("height", x + "vw");
+
+      console.log(coordinates);
+});
 
 var gameOne = function(){
   inPlay = true;
@@ -96,6 +103,7 @@ var startGameOne = function() {
 
   setTimeout(function(){
     clearInterval(changeSquares);
+    socket.disconnect()
     inPlay = false;
   }, totalPlayingTime * 1000);
 };
