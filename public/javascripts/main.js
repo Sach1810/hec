@@ -43,15 +43,16 @@ socket.on('phoneData', function(coordinates){
       var y = coordinates.y;
       var z = coordinates.z;
 
-      var ax = x * 10;
-      var ay = y * 10;
-      var az = z * 10;
+      console.log(coordinates);
+
+      var ax = x * 36;
+      var ay = y * 36;
+      var az = z * 36;
 
       // $(".rotate").css("transform", x + "vw");
 
-      console.log(x);
 
-      $('.rotateX').css('transform', "rotate3d("+ ax +","+ ay +"," + 0 + ","+ az + "deg)");
+      $('.rotateX').css('transform', "rotate3d("+ ax +","+ ay +"," + az + ","+ 360 + "deg)");
       // $('.rotateY').css('transform', 'rotateY(' + ay + 'deg)');
       // $('.rotate').css('transform', 'rotateZ(' + az + 'deg)');
 
