@@ -8,9 +8,11 @@ var computerId;
 var phoneId;
 
 var countInterval = 1;
-var countdownTime = 1;
+var startTime = 4
+var countdownTime = startTime;
 
-var totalPlayingTime = 60;
+var gameDuration = 2;
+var totalPlayingTime = gameDuration;
 
 var squareChangeSpeed = 1000;
 var inPlay = false;
@@ -25,8 +27,6 @@ $('#qrcode').qrcode({
   "size": 100,
   "color": "#3a3",
   "text": phoneLink});
-
-
 
 
 var gameOne = function(){
@@ -99,14 +99,15 @@ socket.on('phoneData', function(coordinates){
 };
 
 var countdown = function(){
-    console.log('start');
   var timeTillStart = setInterval(function(){
     countdownTime -= countInterval;
     $("#countdown").html(countdownTime);
 
     if (countdownTime === 0) {
       $("#openingScreen").addClass('hide');
+      $("#countdown").addClass('hide');
       $("#do-results").removeClass('hide');
+      $("#gameEnd").removeClass('hide');
       
       clearInterval(timeTillStart);
       
@@ -149,8 +150,12 @@ var startGameOne = function() {
 
   setTimeout(function(){
     clearInterval(changeSquares);
-    socket.disconnect()
-    inPlay = false;
+    $("#do-results").addClass('hide');
+    $("#openingScreen").removeClass('hide');
+    $(".gameEnd").removeClass('hide');
+    
+    reset();
+
   }, totalPlayingTime * 1000);
 };
   
@@ -166,5 +171,17 @@ var gameTime = function(){
       inPlay = false;
     };
   }, 1000);
+};
+
+var reset = function(){
+  socket.disconnect();
+  inPlay = false;
+  countdownTime = startTime;
+  totalPlayingTime = gameDuration;
+
+  $("#gameTime").html(" ");
+  $("#countdown").html(" ");
+
+
 };
 

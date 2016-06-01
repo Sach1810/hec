@@ -14,9 +14,12 @@
         <button onclick="gameOne()">Start</button> 
       </div>
       <div id="countdown" class="hide">
-        
       </div>
-        
+     
+
+      <div class="gameEnd hide">
+        <div class="replay" onclick="gameOne()">Replay</div><br>
+        <a href="/games"> Back to games list</a>
       </div>
     </div>
     
@@ -89,8 +92,6 @@
       <div id="five" class="square"></div>
       <div id="six" class="square"></div>
     </div>
-    <a href="/">Home</a>
-    <a href="#" onclick="gameOne();">Play Now</a>
     <div>time left:<div id="gameTime"></div></div>
     <div>score<div id="score"></div></div>
     <div>right:<div id="right"></div></div>
