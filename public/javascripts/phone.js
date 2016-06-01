@@ -9,11 +9,11 @@ window.ondevicemotion = function(e){
     var ay = e.accelerationIncludingGravity.y;
     var az = e.accelerationIncludingGravity.z;
 
-    var x =Math.round(ax);
-    var y =Math.round(ay);
-    var z =Math.round(az);
+    // var x =Math.round(ax);
+    // var y =Math.round(ay);
+    // var z =Math.round(az);
 
-    var coordinates = {'x':x, 'y':y, 'z':z}
+    var coordinates = {'x':ax, 'y':ay, 'z':az}
 
     // send data over the socket
     socket.emit('acceleration',coordinates);

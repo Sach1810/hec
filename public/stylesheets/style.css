@@ -20,11 +20,22 @@ padding: 5px;
   display: inline-block;
 }
 
-.rotate {
-  transform: rotateX(0deg);
+.rotateX {
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+/*  transform: rotateX(0deg);
+  transform: rotateY(0deg);
+/*  transform: rotateZ(0deg);*/
+    transform: rotate3d(0,0,0,0deg);
+}
+
+/*.rotateY {
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
   transform: rotateY(0deg);
   transform: rotateZ(0deg);
-}
+}*/
+
 
 #countdown {
   margin:10vh 0 0 25vw;

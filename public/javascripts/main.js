@@ -51,9 +51,9 @@ socket.on('phoneData', function(coordinates){
 
       console.log(x);
 
-      $('.rotate').css('transform', 'rotateX(' + ax + 'deg)');
-      $('.rotate').css('transform', 'rotateY(' + ay + 'deg)');
-      $('.rotate').css('transform', 'rotateZ(' + az + 'deg)');
+      $('.rotateX').css('transform', "rotate3d("+ ax +","+ ay +"," + 0 + ","+ az + "deg)");
+      // $('.rotateY').css('transform', 'rotateY(' + ay + 'deg)');
+      // $('.rotate').css('transform', 'rotateZ(' + az + 'deg)');
 
       // console.log(coordinates);
 });
