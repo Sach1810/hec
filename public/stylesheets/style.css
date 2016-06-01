@@ -20,6 +20,12 @@ padding: 5px;
   display: inline-block;
 }
 
+.rotate {
+  transform: rotateX(0deg);
+  transform: rotateY(0deg);
+  transform: rotateZ(0deg);
+}
+
 #countdown {
   margin:10vh 0 0 25vw;
   position: absolute;

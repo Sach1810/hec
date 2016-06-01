@@ -43,7 +43,9 @@ socket.on('phoneData', function(coordinates){
       var y = coordinates.y;
       var z = coordinates.z;
 
-      $(".square").css("height", x + "vw");
+      // $(".rotate").css("transform", x + "vw");
+
+      $('.rotate').css('transform', 'transform(' + x + ')');
 
       console.log(coordinates);
 });
