@@ -1,82 +1,86 @@
+//Run socket.io
 var socket = io();
+
+var id;
+var computerId;
+var phoneId;
+
+var countInterval = 1;
+var countdownTime = 1;
+
+var totalPlayingTime = 60;
+
+var squareChangeSpeed = 1000;
+var inPlay = false;
 
 var score = 0;
 var right = 0;
 var wrong = 0;
-var duration = 4;
 
 
-var computerId;
-var phoneId;
+socket.on('moved', function(id){
+  phoneId = id;
+  var maxPoints = 0;
+  
+  if (inPlay) {
+    if (computerId === phoneId && maxPoints === 0) {
+      maxPoints ++;
+      score ++;
+      right ++;
 
-
-socket.on('phoneData', function(coordinates){
-
-
-      console.log(coordinates);
- 
-
-});
-
-    socket.on('moved', function(id){
-      phoneId = id;
-
-    if (computerId == phoneId){
-      var count = 0;
-
-      if (count === 0) {
-        score +=1;
-        count ++;
-        right ++;
-        $("#right").html(right);
-
-      };
+      $("#right").html(right);
     } else {
       score -= 0.5;
       wrong ++;
       $("#wrong").html(wrong);
-     };
-      $("#score").html(score);
-  });
+    };
+    $("#score").html(score);
+  }
+
+});
 
 
-//Countdown timer before the game
-var countdown = function(id){
 
-
-  var loweringCount = setInterval(function(){ 
-    duration -= 1;
-     $("#countdown").html(duration);
-    if (duration === 0){
-      $("#countdown").removeClass('show');
-      $("#countdown").addClass('hide');
-      clearInterval(loweringCount);
-      startGame();
-    }
-  }, 1000);
-
+var gameOne = function(){
+  inPlay = true;
+  countdown();
 };
 
+var countdown = function(){
+  var timeTillStart = setInterval(function(){
+    countdownTime -= countInterval;
+    $("#countdown").html(countdownTime);
 
-var startGame = function(id){
+    if (countdownTime === 0) {
+      $("#countdown").removeClass('show');
+      $("#countdown").addClass('hide');
+      
+      clearInterval(timeTillStart);
+      
+      startGameOne();
+    };
+
+  },1000); 
+};
+    
+var startGameOne = function() {
+  inPlay = true;
   gameTime();
 
-  var game = setInterval(function(){ 
+  var changeSquares = setInterval(function(){
+    var randomNumber = Math.floor(Math.random() * 6) + 1;
 
-    var id = id;
-    var random = Math.floor(Math.random() * 6) + 1;
-
-    if (random == 1) {
+    if (randomNumber == 1) {
       id = "one";
-    } else if (random == 2) {
+    } else if (randomNumber == 2) {
       id = "two";
-    } else if (random == 3) {
+    } else if (randomNumber == 3) {
       id = "three";
-    } else if (random == 4) {
+    } else if (randomNumber == 4) {
       id = "four";
-    } else if (random == 5) {
+    } else if (randomNumber == 5) {
       id = "five";
-    } else if (random == 6) {
+    } else if (randomNumber == 6) {
       id = "six";
     };
 
@@ -85,33 +89,28 @@ var startGame = function(id){
     $("#" + id).css('background-color', 'green');
 
     setTimeout(function(){
-     $("#" + id).css('background-color', 'black');
+      $("#" + id).css('background-color', 'black');
+    }, squareChangeSpeed -100);
 
+  }, squareChangeSpeed);
 
-    }, 1000);
-
-
-
- }, 1000);
-
-//Sets time period for the game to end
   setTimeout(function(){
-    clearInterval(game);
-    socket.disconnect()
-  }, 5000);
-
+    clearInterval(changeSquares);
+    inPlay = false;
+  }, totalPlayingTime * 1000);
 };
-
+  
 var gameTime = function(){
-  var time = 5;
-  var loweringCount = setInterval(function(){ 
+  
+  var countdownGameTime = setInterval(function(){
+    totalPlayingTime -= countInterval;
+    
+    $("#gameTime").html(totalPlayingTime);
 
-    time -= 1;
-     $("#gameTime").html(time);
-    if (time === 0){
-      clearInterval(loweringCount);
-    }
+    if (totalPlayingTime === 0) {
+      clearInterval(countdownGameTime);
+      inPlay = false;
+    };
   }, 1000);
-
 };
 
