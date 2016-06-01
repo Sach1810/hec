@@ -1,7 +1,7 @@
 //Run socket.io
 var socket = io();
 
-var phoneLink = "https://66decad2.ngrok.io/rotating-cubes-phone"
+var phoneLink = "https://hec.herokuapp.com/rotating-cubes-phone"
 
 var id;
 var computerId;
