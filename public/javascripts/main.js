@@ -9,7 +9,7 @@ var phoneId;
 var countInterval = 1;
 var countdownTime = 1;
 
-var totalPlayingTime = 10;
+var totalPlayingTime = 60;
 
 var squareChangeSpeed = 1000;
 var inPlay = false;
