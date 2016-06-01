@@ -11,7 +11,7 @@ var countInterval = 1;
 var startTime = 4
 var countdownTime = startTime;
 
-var gameDuration = 2;
+var gameDuration = 60;
 var totalPlayingTime = gameDuration;
 
 var squareChangeSpeed = 1000;
