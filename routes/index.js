@@ -22,4 +22,12 @@ router.get('/games', function(req, res, next){
   res.render('games');
 });
 
+router.get('/rotating-cubes', function(req, res, next){
+  res.render('rotatingCubes');
+});
+
+router.get('/rotating-cubes-phone', function(req, res, next){
+  res.render('rotatingCubesPhone');
+});
+
 module.exports = router;

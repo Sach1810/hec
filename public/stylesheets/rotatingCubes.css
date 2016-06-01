@@ -21,81 +21,31 @@ p {
   line-height: 25px;
 }
 
-.banner {
-  margin-top:5px;
-  height:70vh;
-  width: 100vw;
-  background: #fff url("../images/main-background.jpeg") no-repeat fixed bottom; 
-  background-size: cover;
-  padding-top:15%;
-}
-
-.goToGames {
-  width:30vw;
-  color: #fff;
-  margin: 0 auto;
-  background-color: rgba(0,0,0,0.7);
-  text-align: center;
-  padding:2vh;
-  font-size: 7vh;
-}
-
-.goToGames a{
-
-  color: #fff;
-  text-decoration: none;
-}
-
-.clickContinue {
-  font-size:4vh;
-}
-
-#latestGames {
-  margin-left: 3%;
-  overflow: hidden;
+#openingScreen {
+  background: #d3d3d3;
+  height: 90vh;
+  width: 90vw;
+  position: absolute;
+  margin: 1% 0 0 5%
 
 }
 
-.gameDisplay {
-  height: 30vw;
-  width: 30vw;
-  background-color: #222;
-  float: left;
-  margin-right: 1vw;
-}
-
-#gamesList {
-  width: 100vw;
-}
-
-.gameListDisplay {
-  height: 30vw;
-  width: 100vw;
-  background-color: #222;
-  margin-bottom: 1vh;
-  padding: 2vh 2vh;
-}
-
-.gameListPic {
+#qrcode {
   background-color: #fff;
-  height:26vw;
-  width: 26vw;
-  float: left;
+  width:20vw;
+  padding: 3vh;
 }
 
-.gameListDescription {
-  width: 68vw;
-  height:26vw;
-  background-color: #fff;
-  float: left;
-  margin-left: 2vw;
+#webAddress {
+
 }
 
-.goToGame {
-  margin-left: 25vw;
-  color: #222;
-  border: 5px solid #222;
-  border-radius: 3px;
+.hide {
+  display: none;
+}
+
+#countdown {
+  font-size:20vh;
 }
 
 /*
@@ -169,25 +119,29 @@ p {
          {
             display: none;
          }*/
-
+.container {
+  display: inline-block;
+  padding: 10vw 0 0 8%;
+}
         .cube
          {
-            width: 150px;
-            height: 150px;
+            width: 20vw;
+            height: 20vw;
             position: relative;
-            margin: 30px auto;
             -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
+            float: left;
+            margin:3vw;
          }
  
          .face
          {
-            width: 150px;
-            height: 150px;
+            width: 20vw;
+            height: 20vw;
             position: absolute;
             font-size: 80px;
             text-align: center;
-            line-height: 150px;
+            line-height: 20vw;
             background-color: #999999;
             box-shadow: inset 0 0 20px #333333;
             opacity: 0.6;

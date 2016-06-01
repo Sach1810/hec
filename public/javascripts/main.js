@@ -1,5 +1,6 @@
 //Run socket.io
 var socket = io();
+var phoneLink = "https://66decad2.ngrok.io/rotating-cubes-phone"
 
 var id;
 var computerId;
@@ -16,6 +17,13 @@ var inPlay = false;
 var score = 0;
 var right = 0;
 var wrong = 0;
+
+$("#webAddress").html(phoneLink);
+
+$('#qrcode').qrcode({
+  "size": 100,
+  "color": "#3a3",
+  "text": phoneLink});
 
 socket.on('moved', function(id){
   phoneId = id;
@@ -42,69 +50,61 @@ socket.on('phoneData', function(coordinates){
       
 console.log(coordinates);
 
-document.getElementById('cube').style.webkitTransform = 
-               document.getElementById('cube').style.transform =
-                       'rotateX(' + coordinates.az + 'deg) ' +
-                       'rotateY(' + coordinates.gy + 'deg) ' +
-                       'rotateZ(' + coordinates.bx + 'deg)';
+document.getElementById('cubeOne').style.webkitTransform = 
+  document.getElementById('cubeOne').style.transform =
+    'rotateX(' + coordinates.az + 'deg) ' +
+    'rotateY(' + coordinates.gy + 'deg) ' +
+    'rotateZ(' + coordinates.bx + 'deg)';
 
 
-document.getElementById('cube1').style.webkitTransform = 
-               document.getElementById('cube').style.transform =
-                       'rotateX(' + coordinates.az + 'deg) ' +
-                       'rotateY(' + coordinates.gy + 'deg) ' +
-                       'rotateZ(' + coordinates.bx + 'deg)';
+document.getElementById('cubeTwo').style.webkitTransform = 
+  document.getElementById('cubeTwo').style.transform =
+    'rotateX(' + coordinates.az + 'deg) ' +
+    'rotateY(' + coordinates.gy + 'deg) ' +
+    'rotateZ(' + coordinates.bx + 'deg)';
 
-                       document.getElementById('cube2').style.webkitTransform = 
-               document.getElementById('cube').style.transform =
-                       'rotateX(' + coordinates.az + 'deg) ' +
-                       'rotateY(' + coordinates.gy + 'deg) ' +
-                       'rotateZ(' + coordinates.bx + 'deg)';
+document.getElementById('cubeThree').style.webkitTransform = 
+  document.getElementById('cubeThree').style.transform =
+    'rotateX(' + coordinates.az + 'deg) ' +
+    'rotateY(' + coordinates.gy + 'deg) ' +
+    'rotateZ(' + coordinates.bx + 'deg)';
 
-// var bx = coordinates.bx;
-// var gy = coordinates.gy;
-// var az = coordinates.az ;
+document.getElementById('cubeFour').style.webkitTransform = 
+  document.getElementById('cubeFour').style.transform =
+    'rotateX(' + coordinates.az + 'deg) ' +
+    'rotateY(' + coordinates.gy + 'deg) ' +
+    'rotateZ(' + coordinates.bx + 'deg)';
 
-// // $('.rotateX').css('transform', "rotate3d("+ bx +","+ gy +"," + az + ","+ 360 + "deg)");
+document.getElementById('cubeFive').style.webkitTransform = 
+  document.getElementById('cubeFive').style.transform =
+    'rotateX(' + coordinates.az + 'deg) ' +
+    'rotateY(' + coordinates.gy + 'deg) ' +
+    'rotateZ(' + coordinates.bx + 'deg)';
 
-// $('.rotateX').css('transform', 'rotateX(' + bx + 'deg)');
-// $('.rotateX').css('transform', 'rotateY(' + gy + 'deg)');
-// $('.rotateX').css('transform', 'rotateZ(' + az + 'deg)');
-
-
-      // var x = coordinates.x;
-      // var y = coordinates.y;
-      // var z = coordinates.z;
-
-      
-
-      // var ax = x * 57.2958;
-      // var ay = y * 57.2958;
-      // var az = z * 57.2958;
-
-      // $(".rotate").css("transform", x + "vw");
-
-
-      // $('.rotateX').css('transform', "rotate3d("+ ax +","+ ay +"," + az + ","+ 30 + "deg)");
-      // $('.rotateY').css('transform', 'rotateY(' + ay + 'deg)');
-      // $('.rotate').css('transform', 'rotateZ(' + az + 'deg)');
-
-      // console.log(coordinates);
+document.getElementById('cubeSix').style.webkitTransform = 
+  document.getElementById('cubeSix').style.transform =
+    'rotateX(' + coordinates.az + 'deg) ' +
+    'rotateY(' + coordinates.gy + 'deg) ' +
+    'rotateZ(' + coordinates.bx + 'deg)';
 });
 
 var gameOne = function(){
+  $(".title").addClass("hide");
+  $("#countdown").removeClass("hide");
+
   inPlay = true;
   countdown();
 };
 
 var countdown = function(){
+    console.log('start');
   var timeTillStart = setInterval(function(){
     countdownTime -= countInterval;
     $("#countdown").html(countdownTime);
 
     if (countdownTime === 0) {
-      $("#countdown").removeClass('show');
-      $("#countdown").addClass('hide');
+      $("#openingScreen").addClass('hide');
+      $("#do-results").removeClass('hide');
       
       clearInterval(timeTillStart);
       
@@ -122,17 +122,17 @@ var startGameOne = function() {
     var randomNumber = Math.floor(Math.random() * 6) + 1;
 
     if (randomNumber == 1) {
-      id = "one";
+      id = "cubeOne";
     } else if (randomNumber == 2) {
-      id = "two";
+      id = "cubeTwo";
     } else if (randomNumber == 3) {
-      id = "three";
+      id = "cubeThree";
     } else if (randomNumber == 4) {
-      id = "four";
+      id = "cubeFour";
     } else if (randomNumber == 5) {
-      id = "five";
+      id = "cubeFive";
     } else if (randomNumber == 6) {
-      id = "six";
+      id = "cubeSix";
     };
 
     computerId = id;
