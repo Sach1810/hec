@@ -8,7 +8,7 @@
     <div id="openingScreen">
       <div class="title">
         <h1>Rotating Cubes</h1>
-        <div id="qrcode" class="qrcode"></div>
+        <div id="qrcode"></div>
         <div id="webAddress"></div><br>
         <div> Either use qr code or go to link on your phone. Then press start</div>
         <button onclick="gameOne()">Start</button> 
@@ -100,9 +100,9 @@
 
   <script src="/socket.io/socket.io.js"></script>
 
-  <script type="text/javascript" src="../jquery/dist/jquery.min.js"></script>
-  <script type="text/javascript" src="../jquery-qrcode-0.14.0/jquery-qrcode-0.14.0.min.js"></script>
-  <script type="text/javascript" src="../javascripts/main.js"></script>
+  <script type="text/javascript" src="/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="jquery-qrcode-0.14.0/jquery-qrcode-0.14.0.min.js"></script>
+  <script type="text/javascript" src="javascripts/main.js"></script>
 
   </body>
 </html>

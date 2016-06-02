@@ -2,6 +2,10 @@
 var socket = io();
 
 var phoneLink = "https://hec.herokuapp.com/rotating-cubes-phone"
+var phoneLinkPlayer1 = "https://hec.herokuapp.com/rotating-cubes-phone/player1-phone"
+var phoneLinkPlayer2 = "https://hec.herokuapp.com/rotating-cubes-phone/player2-phone"
+
+var playerAmount;
 
 var id;
 var computerId;
@@ -11,7 +15,7 @@ var countInterval = 1;
 var startTime = 4
 var countdownTime = startTime;
 
-var gameDuration = 60;
+var gameDuration = 3;
 var totalPlayingTime = gameDuration;
 
 var squareChangeSpeed = 1000;
@@ -21,6 +25,7 @@ var score = 0;
 var right = 0;
 var wrong = 0;
 
+
 $("#webAddress").html(phoneLink);
 
 $('#qrcode').qrcode({
@@ -28,6 +33,20 @@ $('#qrcode').qrcode({
   "color": "#3a3",
   "text": phoneLink});
 
+$('#qrcode1').qrcode({
+  "size": 100,
+  "color": "#3a3",
+  "text": phoneLinkPlayer1});
+
+$('#qrcode2').qrcode({
+  "size": 100,
+  "color": "#3a3",
+  "text": phoneLinkPlayer2});
+
+var players = function(players){
+  playerAmount = players;
+  console.log(playerAmount);
+}
 
 var gameOne = function(){
   $(".title").addClass("hide");
